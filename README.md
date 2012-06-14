@@ -30,8 +30,14 @@ As you can see, the closer to zero the data points approach, the greater the
 precision used to track/group them (and vice-versa).
 
 # API
-## llquantize([bucket_size=10])
+## llquantize([bucket_size=10, [steps=10]])
 
+Arguments:
+
+  * `bucket_size` - The factor by which the bucket size should increase.
+    (i.e. the first bucket will have the size `bucket_size`, the next will
+    be `bucket_size^2`...)
+  * `steps` - The number of divisions per bucket,
 
 # Installation
 
