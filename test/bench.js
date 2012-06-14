@@ -11,5 +11,5 @@ function bench(f) {
   return +Date.now() - start
 }
 
-console.log(bench(llquantize), "ms (smaller is faster)")
+console.log("" + bench(llquantize) + "ms (smaller is faster)")
 
