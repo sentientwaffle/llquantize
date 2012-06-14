@@ -1,5 +1,7 @@
 # llquantize - Log/linear quantization
 
+[![Build Status](https://secure.travis-ci.org/sentientwaffle/llquantize.png?branch=master)](http://travis-ci.org/sentientwaffle/llquantize)
+
 For more information on log/linear quantization, see
 [this blog post](http://dtrace.org/blogs/bmc/2011/02/08/llquantize/).
 
