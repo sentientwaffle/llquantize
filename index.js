@@ -2,7 +2,7 @@
 
 Log-linear quantization.
 
-Example: (bucket size 10)
+Example: (bucket size = 10, steps = 10)
 
   0         (not a range)
          ...
@@ -13,9 +13,19 @@ Example: (bucket size 10)
   100-1000  (delta: 100)
          ...
 
+Example: (bucket size = 10, steps = 20)
+
+  0         (not a range)
+         ...
+  1-10      (delta: 0.5)
+  10-100    (delta: 5)
+  100-1000  (delta: 50)
+         ...
+
 */
-module.exports = function(bucket_size) {
+module.exports = function(bucket_size, steps) {
   bucket_size || (bucket_size = 10)
+  steps || (steps = 10)
   var buckets = {}
     , log_bucket_size = Math.log(bucket_size)
 
@@ -32,7 +42,9 @@ module.exports = function(bucket_size) {
     // Log(point) base bucket_size
     var log_level = Math.log(point) / log_bucket_size
       , level = Math.pow(bucket_size, Math.floor(log_level))
-      , size = level * Math.floor(point / level)
+      , next_level = level * bucket_size
+      , step_size = next_level / steps
+      , size = level + step_size * Math.floor((point - level) / step_size)
 
     // Prevent nasty floating point keys
     // (e.g. instead of 0.600000000001, use 0.6).
