@@ -13,5 +13,5 @@
     , "url":  "https://github.com/sentientwaffle/llquantize.git"
     },
   "devDependencies": { "tap": "~0.2.5" },
-  "engines": { "node": "*" },
+  "engines": { "node": "*" }
 }
