@@ -14,5 +14,4 @@
     },
   "devDependencies": { "tap": "~0.2.5" },
   "engines": { "node": "*" },
-  "private": true
 }
