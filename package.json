@@ -7,7 +7,7 @@
   "main": "index.js",
   "homepage": "https://github.com/sentientwaffle/llquantize",
   "bugs": { "url": "https://github.com/sentientwaffle/llquantize/issues" },
-  "scripts": { "test": "node test/*.test.js" },
+  "scripts": { "test": "tap test/*.test.js" },
   "repository":
     { "type": "git"
     , "url":  "https://github.com/sentientwaffle/llquantize.git"
