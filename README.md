@@ -11,7 +11,7 @@ using the wrong aggregation resolution, which leads to
 or discarding valuable information in overly coarse-grained data".
 
 It does this by logarithmically aggregating by order of magnitude,
-but linearly aggregating within an order of magnitude
+but linearly aggregating within an order of magnitude.
 
 # Example
 
