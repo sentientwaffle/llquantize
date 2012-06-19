@@ -5,6 +5,14 @@
 For more information on log/linear quantization, see
 [this blog post](http://dtrace.org/blogs/bmc/2011/02/08/llquantize/).
 
+In summary: log/linear quantization addresses the problem of
+using the wrong aggregation resolution, which leads to
+"clogging the system with unnecessarily fine-grained data,
+or discarding valuable information in overly coarse-grained data".
+
+It does this by logarithmically aggregating by order of magnitude,
+but linearly aggregating within an order of magnitude
+
 # Example
 
     var llquantize = require('llquantize')
