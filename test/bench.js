@@ -4,7 +4,7 @@ function bench(f) {
   var llq = f()
     , start = +Date.now()
 
-  for (var i = 0; i < 10000000; i++) {
+  for (var i = 0; i < 100000000; i++) {
     llq(Math.round(Math.random() * 100000))
   }
 
