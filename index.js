@@ -29,14 +29,6 @@ module.exports = function(bucket_size, steps) {
   var buckets = {}
     , log_bucket_size = Math.log(bucket_size)
 
-  function incr(bucket) {
-    if (buckets[bucket]) {
-      buckets[bucket]++
-    } else {
-      buckets[bucket] = 1
-    }
-  }
-
   function llquantize(point) {
     if (point === 0) return 0
     // Log(point) base bucket_size
@@ -59,7 +51,12 @@ module.exports = function(bucket_size, steps) {
     if (typeof point === "undefined") {
       return buckets
     } else {
-      incr(llquantize(point))
+      var bucket = llquantize(point)
+      if (buckets[bucket]) {
+        buckets[bucket]++
+      } else {
+        buckets[bucket] = 1
+      }
     }
   }
 }
