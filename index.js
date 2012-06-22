@@ -46,12 +46,14 @@ module.exports = function(bucket_size, steps) {
 
     return fixed
   }
-  
+
   return function(point) {
     if (typeof point === "undefined") {
       return buckets
     } else {
       var bucket = llquantize(point)
+
+      // Increment frequencies.
       if (buckets[bucket]) {
         buckets[bucket]++
       } else {
