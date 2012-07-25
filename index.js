@@ -62,3 +62,26 @@ module.exports = function(bucket_size, steps) {
     }
   }
 }
+
+// Examples:
+//
+//   llquantize.merge([{"10": 2, "5": 3}, {"10": 6, "3": 1}])
+//   // => {"10": 8, "5": 3, "3": 1}
+//
+// Returns Object.
+module.exports.merge = function(buckets) {
+  var obj = {}
+
+  buckets.forEach(function(bucket) {
+    var k
+    for (k in bucket) {
+      if (obj[k]) {
+        obj[k] += bucket[k]
+      } else {
+        obj[k] = bucket[k]
+      }
+    }
+  })
+
+  return obj
+}

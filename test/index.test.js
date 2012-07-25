@@ -62,3 +62,24 @@ function test_llq(input, expect, base, steps) {
     t.end()
   }
 }
+
+test("llquantize.merge", function(t) {
+  test("combine objects", function(t) {
+    t.deepEquals(llquantize.merge(
+      [ { 10: 4, 5: 2, 1: 3 }
+      , { 10: 5, 1: 2, 101: 50 }])
+    , { 10: 9, 1: 5, 5: 2, 101: 50 })
+
+    t.end()
+  })
+
+  test("combine an empty object", function(t) {
+    t.deepEquals(llquantize.merge(
+      [ { 10: 5 }
+      , {}])
+    , { 10: 5 })
+
+    t.end()
+  })
+  t.end()
+})
