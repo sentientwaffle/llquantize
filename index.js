@@ -28,6 +28,7 @@ module.exports = function(bucket_size, steps) {
   steps || (steps = 10)
   var buckets = {}
     , log_bucket_size = Math.log(bucket_size)
+    , step_ratio = steps - (steps / bucket_size) //(steps / bucket_size)
 
   function llquantize(point) {
     if (point === 0) return 0
@@ -35,7 +36,7 @@ module.exports = function(bucket_size, steps) {
     var log_level = Math.log(point) / log_bucket_size
       , level = Math.pow(bucket_size, Math.floor(log_level))
       , next_level = level * bucket_size
-      , step_size = next_level / steps
+      , step_size = (next_level - level) / step_ratio
       , size = level + step_size * Math.floor((point - level) / step_size)
 
     // Prevent nasty floating point keys
