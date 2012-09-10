@@ -28,7 +28,7 @@ module.exports = function(bucket_size, steps) {
   steps || (steps = 10)
   var buckets = {}
     , log_bucket_size = Math.log(bucket_size)
-    , step_ratio = steps - (steps / bucket_size) //(steps / bucket_size)
+    , step_ratio = steps - (steps / bucket_size)
 
   function llquantize(point) {
     if (point === 0) return 0
