@@ -1,6 +1,6 @@
 {
   "name": "llquantize",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "sentientwaffle (http://sentientwaffle.github.com/)",
   "description": "log/linear quantization",
   "keywords": ["quantize", "quantization", "aggregation"],
