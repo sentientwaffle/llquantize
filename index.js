@@ -73,16 +73,19 @@ module.exports = function(bucket_size, steps) {
 module.exports.merge = function(buckets) {
   var obj = {}
 
-  buckets.forEach(function(bucket) {
-    var k
-    for (k in bucket) {
+  for (var j = 0, b = buckets.length; j < b; j++) {
+    var bucket = buckets[j]
+      , keys = Object.keys(bucket)
+      , k
+    for (var i = 0, l = keys.length; i < l; i++) {
+      k = keys[i]
       if (obj[k]) {
         obj[k] += bucket[k]
       } else {
         obj[k] = bucket[k]
       }
     }
-  })
+  }
 
   return obj
 }
