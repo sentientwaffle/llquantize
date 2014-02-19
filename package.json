@@ -1,17 +1,29 @@
 {
   "name": "llquantize",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "sentientwaffle (http://sentientwaffle.github.com/)",
   "description": "log/linear quantization",
-  "keywords": ["quantize", "quantization", "aggregation"],
+  "keywords": [
+    "quantize",
+    "quantization",
+    "aggregation"
+  ],
   "main": "index.js",
   "homepage": "https://github.com/sentientwaffle/llquantize",
-  "bugs": { "url": "https://github.com/sentientwaffle/llquantize/issues" },
-  "scripts": { "test": "tap test/*.test.js" },
-  "repository":
-    { "type": "git"
-    , "url":  "https://github.com/sentientwaffle/llquantize.git"
-    },
-  "devDependencies": { "tap": "~0.2.5" },
-  "engines": { "node": "*" }
+  "bugs": {
+    "url": "https://github.com/sentientwaffle/llquantize/issues"
+  },
+  "scripts": {
+    "test": "tap test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sentientwaffle/llquantize.git"
+  },
+  "devDependencies": {
+    "tap": "~0.2.5"
+  },
+  "engines": {
+    "node": "*"
+  }
 }
