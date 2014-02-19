@@ -19,10 +19,12 @@ test("zero", test_llq([0, 0, 4], {0: 2, 4: 1}))
 test("log-linear quantizes sub-1 numbers", test_llq(
     [ 4
     , 0.54, 0.61
-    , 0.0243, 0.0224, 0.032 ]
+    , 0.000000000000000000000012
+    , 0.0243, 0.0224, 0.0213256823, 0.032 ]
   , { 4: 1
+    , "1.0000000000000001e-23": 1
     , "0.5": 1, "0.6": 1
-    , "0.02": 2, "0.03": 1
+    , "0.02": 3, "0.03": 1
     }))
 
 test("example from README.md", test_llq(
@@ -62,24 +64,3 @@ function test_llq(input, expect, base, steps) {
     t.end()
   }
 }
-
-test("llquantize.merge", function(t) {
-  test("combine objects", function(t) {
-    t.deepEquals(llquantize.merge(
-      [ { 10: 4, 5: 2, 1: 3 }
-      , { 10: 5, 1: 2, 101: 50 }])
-    , { 10: 9, 1: 5, 5: 2, 101: 50 })
-
-    t.end()
-  })
-
-  test("combine an empty object", function(t) {
-    t.deepEquals(llquantize.merge(
-      [ { 10: 5 }
-      , {}])
-    , { 10: 5 })
-
-    t.end()
-  })
-  t.end()
-})

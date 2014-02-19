@@ -41,15 +41,13 @@ module.exports = function(bucket_size, steps) {
 
     // Prevent nasty floating point keys
     // (e.g. instead of 0.600000000001, use 0.6).
-    var fixed = size < 1
-              ? size.toFixed(Math.round(-1 * Math.log(level) / log_bucket_size))
-              : size
-
-    return fixed
+    return size < 1
+         ? round(size, Math.round(-1 * Math.log(level) / log_bucket_size))
+         : size
   }
 
   return function(point) {
-    if (typeof point === "undefined") {
+    if (point === undefined) {
       return buckets
     } else {
       var bucket = llquantize(point)
@@ -64,28 +62,7 @@ module.exports = function(bucket_size, steps) {
   }
 }
 
-// Examples:
-//
-//   llquantize.merge([{"10": 2, "5": 3}, {"10": 6, "3": 1}])
-//   // => {"10": 8, "5": 3, "3": 1}
-//
-// Returns Object.
-module.exports.merge = function(buckets) {
-  var obj = {}
-
-  for (var j = 0, b = buckets.length; j < b; j++) {
-    var bucket = buckets[j]
-      , keys = Object.keys(bucket)
-      , k
-    for (var i = 0, l = keys.length; i < l; i++) {
-      k = keys[i]
-      if (obj[k]) {
-        obj[k] += bucket[k]
-      } else {
-        obj[k] = bucket[k]
-      }
-    }
-  }
-
-  return obj
+function round(n, digits) {
+  var tens = Math.pow(10, digits)
+  return Math.round(n * tens) / tens
 }
